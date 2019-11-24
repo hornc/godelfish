@@ -32,4 +32,4 @@ if __name__ == '__main__':
         print('    Dec      %s' % gf)
         print('    Hex    %s' % hex(gf))
     elif sys.argv[2] == 'hex':
-        print(hex(gf4))
+        print(hex(gf))
