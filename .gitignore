@@ -1,0 +1,11 @@
+*.swp
+
+# LaTeX
+*.aux
+*.log
+*.pdf
+
+# python
+__pycache__/
+.cache
+
