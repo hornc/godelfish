@@ -2,6 +2,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}% http://ctan.org/pkg/amsmath
 \usepackage{amsfonts} 
+\usepackage{amssymb}
 
 \begin{document}
 
@@ -34,8 +35,9 @@ A Gödelfish program, $\ddot{\varphi}$, can be formed from a Deadfish program by
   \end{center}
 \end{table}
 
-\section{Conversion}
-A Gödelfish program, $\ddot{\varphi}$, can be converted to an executable Brainfoctal (a Turing complete Gödel numbering language) program, $\beta$, using the following bijective function:
+\section{Conversion to Brainfoctal}
+
+A Gödelfish program, $\ddot{\varphi}$, can be converted to a corresponding Brainfoctal (a Turing complete Gödel numbering language) value, $\beta$, using the following bijective continuous piecewise linear function:
 
 \[
 b:\mathbb{R} \to \mathbb{N} \text{ given by }
@@ -46,6 +48,37 @@ b(\ddot{\varphi}) = \beta
 b^{-1}:\mathbb{N} \to \mathbb{R} \text{ given by }
 b^{-1}(\beta) = \ddot{\varphi}
 \]
+
+\begin{equation}
+	b(\ddot{\varphi}) = \sum_{i=0}^{\lfloor \log_4 \ddot{\varphi} \rfloor + 1} 8^{\sum_{j=0}^{i} \lfloor \log_8(8^{136}c(\lfloor{\frac{\ddot{\varphi}}{4^j}}\rfloor \bmod 4) + q) \rfloor + 1} 8^{136}c(\lfloor{\frac{\ddot{\varphi}}{4^i}}\rfloor \bmod 4) + q
+\end{equation}
+
+\begin{equation}
+	c(x) = 8^{136} ( 4 + 216x + \lfloor {\frac{x}{2}} (p - 2 \cdot 216) \rfloor + \lfloor {\frac{x}{3}} r .... \rfloor ) + q
+\end{equation}
+
+\[
+	p = 311138260380880706729590840158768308142226
+\]
+\[
+	q = 592854091379476160373099716865089354963626327670769972503843485670491819724574514810292068238714291637482209552473531334722
+\]
+\[
+	r = {\frac{23955826966570484256306562472764680810624019453460258257506148662886330202100027735819081798905623824670875086665797446363726141753333684743611573092884160}{8^{136}}}-q
+\]
+\[
+	c(d) =
+		\begin{cases}
+			4,& \text{if } d \lessapprox 1.9 \\
+			216,& \text{if } d \gtrapprox 1.9 \\
+		\end{cases}
+\]
+
+
+
+
+
+This converted number can then be executed as Brainfoctal, and will produce the expected Deadfish output.
 
 \subsection{Variants}
 There are two variants of Gödelfish.
@@ -58,7 +91,7 @@ Where
 $\ddot{\varphi} \in (\mathbb{R} - \mathbb{N})$ can be termed \textit{Unatural} Gödelfish.
 
 
-\section{Generation}
+\section{Gödelfish Code Generation}
 The following function generates a Gödelfish program that sets the accumulator to $i, \text{where } i \in \mathbb{N}_{i\ne256}$:
 
 \[
@@ -84,7 +117,7 @@ There are other possible code generation functions.
 To modify a program to output the accumulator value, simply multiply by 4, and add 3:
 
 \[
-\ddot{\varphi} = 4\phi(i) + 3
+	\ddot{\varphi}_{\textsc{output}} = 4\phi(i) + 3
 \]
 
 \section{Evaluation and output encoding}
