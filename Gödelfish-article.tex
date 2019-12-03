@@ -3,6 +3,7 @@
 \usepackage{amsmath}% http://ctan.org/pkg/amsmath
 \usepackage{amsfonts} 
 \usepackage{amssymb}
+\usepackage{seqsplit}
 
 \begin{document}
 
@@ -49,36 +50,44 @@ b^{-1}:\mathbb{N} \to \mathbb{R} \text{ given by }
 b^{-1}(\beta) = \ddot{\varphi}
 \]
 
-\begin{equation}
-	b(\ddot{\varphi}) = \sum_{i=0}^{\lfloor \log_4 \ddot{\varphi} \rfloor + 1} 8^{\sum_{j=0}^{i} \lfloor \log_8(8^{136}c(\lfloor{\frac{\ddot{\varphi}}{4^j}}\rfloor \bmod 4) + q) \rfloor + 1} 8^{136}c(\lfloor{\frac{\ddot{\varphi}}{4^i}}\rfloor \bmod 4) + q
-\end{equation}
-
-\begin{equation}
-	c(x) = 8^{136} ( 4 + 216x + \lfloor {\frac{x}{2}} (p - 2 \cdot 216) \rfloor + \lfloor {\frac{x}{3}} r .... \rfloor ) + q
-\end{equation}
-
-\[
-	p = 311138260380880706729590840158768308142226
-\]
-\[
-	q = 592854091379476160373099716865089354963626327670769972503843485670491819724574514810292068238714291637482209552473531334722
-\]
-\[
-	r = {\frac{23955826966570484256306562472764680810624019453460258257506148662886330202100027735819081798905623824670875086665797446363726141753333684743611573092884160}{8^{136}}}-q
-\]
-\[
-	c(d) =
-		\begin{cases}
-			4,& \text{if } d \lessapprox 1.9 \\
-			216,& \text{if } d \gtrapprox 1.9 \\
-		\end{cases}
-\]
-
-
-
-
+\begin{align}
+	b(\ddot{\varphi}) ={}& \sum_{i=0}^{\lfloor \log_4 \ddot{\varphi} \rfloor + 1} b_{\textsc{idso}}(\lfloor{\frac{\ddot{\varphi}}{4^i}}\rfloor \bmod 4) \cdot 8^{\sum_{j=0}^{i} \lfloor \log_8(b_{\textsc{idso}}(\lfloor{\frac{\ddot{\varphi}}{4^j}}\rfloor \bmod 4)) \rfloor + 1} \\
+	b_{\textsc{idso}}(x) ={}& \max(b_{\textsc{id}}(x), b_{\textsc{so}}(x)) \\
+	b_{\textsc{id}}(x) ={}& 216x \cdot 8^{136} + d \\
+	b_{\textsc{so}}(x) ={}& ox - g \\
+	\begin{split}
+	d ={}& \text{\footnotesize 32370779665404705561807609489961735142772450595278948496424386} \\
+	     & \text{\footnotesize 66768114984669819898111048909997575431027847057652566964551746}
+	\end{split} \\
+	\begin{split}
+	o ={}& \text{\footnotesize 14405520897770861239295320965768628031155278608853989995878087} \\
+	     & \text{\footnotesize 51039303575288379014650106747233088457451983932729811175340555} \\
+	     & \text{\footnotesize 027052154015192163827170902870107520892608}
+	\end{split} \\
+	\begin{split}
+	g ={}& \text{\footnotesize 26754243754103765292330832085990828424744263601285353899531352} \\
+	     & \text{\footnotesize 52873368656423787611508483038332610047342918664129411722483469} \\
+	     & \text{\footnotesize 658221319869868861186264640741264481336638}
+	\end{split}
+\end{align}
 
 This converted number can then be executed as Brainfoctal, and will produce the expected Deadfish output.
+
+The crossover point for the two linear equations that make up $b_{\textsc{idso}}(x)$ is roughly 1.9
+
+\begin{equation}
+	b_{\textsc{idso}}(x) =
+		\begin{cases}
+			b_{\textsc{id}}(x),& \text{if } x \lessapprox 1.9 \\
+			b_{\textsc{so}}(x),& \text{if } x \gtrapprox 1.9 \\
+		\end{cases}
+\end{equation}
+
+
+
+
+
+
 
 \subsection{Variants}
 There are two variants of Gödelfish.
@@ -88,7 +97,7 @@ $\ddot{\varphi} \in \mathbb{N}$: \textit{Natural} Gödelfish.
 $\ddot{\varphi} \in \mathbb{R}$: \textit{Real} Gödelfish.
 
 Where
-$\ddot{\varphi} \in (\mathbb{R} - \mathbb{N})$ can be termed \textit{Unatural} Gödelfish.
+$\ddot{\varphi} \in (\mathbb{R} - \mathbb{N})$ can be termed \textit{Unnatural} Gödelfish.
 
 
 \section{Gödelfish Code Generation}
