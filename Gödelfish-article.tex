@@ -84,11 +84,6 @@ The crossover point for the two linear equations that make up $b_{\textsc{idso}}
 \end{equation}
 
 
-
-
-
-
-
 \subsection{Variants}
 There are two variants of Gödelfish.
 
@@ -133,9 +128,28 @@ To modify a program to output the accumulator value, simply multiply by 4, and a
 
 
 \begin{equation}
-    \label{simple_equation}
-    \alpha = \sqrt{ \beta }
+	O(\ddot{\varphi}, r, d) = \sum_{i=0}^{\lfloor \log_4 \ddot{\varphi} \rfloor + 2} I(O(s(\ddot{\varphi}, i, 2), r, d), c(\ddot{\varphi}, i), r, d)
 \end{equation}
+
+\begin{equation}
+	s(\ddot{\varphi}, i, n) = \left\lfloor \frac{\ddot{\varphi}}{4^{\lfloor \log_4 \ddot{\varphi} \rfloor - i + n}} \right\rfloor
+\end{equation}
+
+\begin{equation}
+	c(\ddot{\varphi}, i) = s(\ddot{\varphi}, i, 1) - 4s(\ddot{\varphi}, i, 2)
+\end{equation}
+
+\begin{equation}
+	I(s, c, r, d) = ...
+\end{equation}
+
+Where
+
+$\ddot{\varphi}$ = Gödelfish value, $\ddot{\varphi} \in \mathbb{N}$
+
+r = Radix of output values.
+
+d = Number of digits per output value in base radix.
 
 
 \section{Conclusion}

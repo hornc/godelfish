@@ -47,7 +47,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Convert a Natural Gödelfish value into its resulting output encoding.')
     parser.add_argument('value', help='Gödelfish value, 𝜑̈ ∈ ℕ')
     parser.add_argument('radix', help='radix of output values', nargs='?', default=10)
-    parser.add_argument('digits', help='number of digits per ouput value in base radix', nargs='?', default=4)
+    parser.add_argument('digits', help='number of digits per output value in base radix', nargs='?', default=4)
     args = parser.parse_args()
 
     if args.value.startswith('0d'): # custom base-4 notation
