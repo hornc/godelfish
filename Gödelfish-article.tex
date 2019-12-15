@@ -98,21 +98,20 @@ $\ddot{\varphi} \in (\mathbb{R} - \mathbb{N})$ can be termed \textit{Unnatural} 
 \section{Gödelfish Code Generation}
 The following function generates a Gödelfish program that sets the accumulator to $i, \text{where } i \in \mathbb{N}_{i\ne256}$:
 
-\begin{equation}
-\phi(i) = \frac{4^{\frac{\lvert\alpha(i)\rvert + \alpha(i)}{2}} - 1}{3} 
-+ \gamma(i)(38^2 + 2)4^{\lvert i-17^2\rvert}
-+ \frac{0}{(4^4 - i)(\lvert i \rvert + i)}
-\end{equation}
-where
-\begin{equation}
-\alpha(i) = i \big\lvert 1-\gamma(i) \big\rvert
-+ \gamma(i)(i - 17^{2})
-\end{equation}
-and
-\begin{equation}
-	\gamma: \mathbb{N} \to \{0, 1\} \text{ given by } \gamma(i) = \left\lceil\frac{i - 4^{4}}{1 + (i - 4^{4})^{2}}\right\rceil
-\end{equation}
-
+\begin{align}
+	\phi(i) ={}& \frac{4^{\frac{\lvert\alpha(i)\rvert + \alpha(i)}{2}} - 1}{3}
+	+ \gamma(i)(38^2 + 2)4^{\lvert i-17^2\rvert}
+	+ \frac{0}{(4^4 - i)(\lvert i \rvert + i)}
+	\intertext{where}
+\begin{split}
+	\alpha(i) ={}& i \big\lvert 1-\gamma(i) \big\rvert
+	+ \gamma(i)(i - 17^{2})
+\end{split}
+	\intertext{and $\gamma: \mathbb{N} \to \{0, 1\}$ given by}
+\begin{split}
+	\gamma(i) ={}& \left\lceil\frac{i - 4^{4}}{1 + (i - 4^{4})^{2}}\right\rceil
+\end{split}
+\end{align}
 
 This is by no means an optimised conversion, but it does produce accurate output for all valid inputs.
 There are other possible code generation functions.
@@ -124,8 +123,8 @@ To modify a program to output the accumulator value, simply multiply by 4, and a
 	\ddot{\varphi}_{\textsc{output}} = 4\phi(i) + 3
 \end{equation}
 
-\section{Evaluation and output encoding}
 
+\section{Evaluation and output encoding}
 
 \begin{align}
 	O(\ddot{\varphi}, r, d) ={}& \sum_{i=0}^{\lfloor \log_4 \ddot{\varphi} \rfloor + 2} I(O(s(\ddot{\varphi}, i, 2), r, d), c(\ddot{\varphi}, i), r, d) \\
