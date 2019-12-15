@@ -17,23 +17,28 @@ def I(o, c, r=10, d=4):
     if o == 0 and c == 0:
         return 0
     #print('o: %d c: %d' % (o, c))
-    ac = o - floor(o/r**d)*r**d
+    ac = o - (o//(r**d))*r**d
     if c == 3:  # output
        return o * r**d - o + ac
+
     if c == 2:  # square
-       return ac**2 - ac
+       v = ac**2 - ac
     if c == 1:
        #print('INC')
-       return 1
+       v = 1
     if c == 0:
        #print('NEG')
-       return -1
+       v = -1
+    if v + ac == 256:
+        return -ac
+    else:
+        return v
 
 
 def O(𝜑̈, r=10, d=4):
     if 𝜑̈ == 0:
         return 0
-    return sum([I(O(floor(𝜑̈/(4**(floor(log(𝜑̈, 4) - i + 2)))), r, d), floor(𝜑̈/4**(floor(log(𝜑̈, 4)) - i +1)) - (4 * floor(𝜑̈/(4**((floor(log(𝜑̈, 4)) - i + 2))))), r, d) for i in range(floor(log(𝜑̈, 4)) + 2)])
+    return sum([I(O(floor(𝜑̈/(4**(floor(log(𝜑̈, 4) - i + 2)))), r, d), floor(𝜑̈/4**(floor(log(𝜑̈, 4)) - i + 1)) - (4 * floor(𝜑̈/(4**((floor(log(𝜑̈, 4)) - i + 2))))), r, d) for i in range(floor(log(𝜑̈, 4)) + 2)])
 
 
 if __name__ == '__main__':
