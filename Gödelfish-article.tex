@@ -127,29 +127,25 @@ To modify a program to output the accumulator value, simply multiply by 4, and a
 \section{Evaluation and output encoding}
 
 
-\begin{equation}
-	O(\ddot{\varphi}, r, d) = \sum_{i=0}^{\lfloor \log_4 \ddot{\varphi} \rfloor + 2} I(O(s(\ddot{\varphi}, i, 2), r, d), c(\ddot{\varphi}, i), r, d)
-\end{equation}
-
-\begin{equation}
-	s(\ddot{\varphi}, i, n) = \left\lfloor \frac{\ddot{\varphi}}{4^{\lfloor \log_4 \ddot{\varphi} \rfloor - i + n}} \right\rfloor
-\end{equation}
-
-\begin{equation}
-	c(\ddot{\varphi}, i) = s(\ddot{\varphi}, i, 1) - 4s(\ddot{\varphi}, i, 2)
-\end{equation}
-
-\begin{equation}
-	I(s, c, r, d) = ...
-\end{equation}
+\begin{align}
+	O(\ddot{\varphi}, r, d) ={}& \sum_{i=0}^{\lfloor \log_4 \ddot{\varphi} \rfloor + 2} I(O(s(\ddot{\varphi}, i, 2), r, d), c(\ddot{\varphi}, i), r, d) \\
+\begin{split}
+	s(\ddot{\varphi}, i, n) ={}& \left\lfloor \frac{\ddot{\varphi}}{4^{\lfloor \log_4 \ddot{\varphi} \rfloor - i + n}} \right\rfloor
+\end{split} \\
+\begin{split}
+	c(\ddot{\varphi}, i) ={}& s(\ddot{\varphi}, i, 1) - 4s(\ddot{\varphi}, i, 2)
+\end{split} \\
+\begin{split}
+	I(s, c, r, d) ={}& ...
+\end{split}
+\end{align}
 
 Where
-
-$\ddot{\varphi}$ = Gödelfish value, $\ddot{\varphi} \in \mathbb{N}$
-
-r = Radix of output values.
-
-d = Number of digits per output value in base radix.
+\begin{tabular}{rl}
+	$\ddot{\varphi}$ =& Gödelfish value, $\ddot{\varphi} \in \mathbb{N}$ \\
+	r =& Radix of output values. \\
+	d =& Number of digits per output value in base radix.
+\end{tabular}
 
 
 \section{Conclusion}
