@@ -6,8 +6,8 @@
 from math import floor, log
 
 
-# Final form of E (Evaluate)
-E = lambda 𝜑̈, r=10, d=4: floor(O(𝜑̈, r, d)/r**d)
+# Final Output of a Gödelfish program, excludes the current accumulator value.
+O = lambda 𝜑̈, r=10, d=4: floor(E(𝜑̈, r, d)/r**d)
 
 
 def I(o, c, r=10, d=4):
@@ -35,10 +35,14 @@ def I(o, c, r=10, d=4):
         return v
 
 
-def O(𝜑̈, r=10, d=4):
+def E(𝜑̈, r=10, d=4):
+    """
+    Evaluate a Gödelfish program. Returns full state:
+    current accumulator and all previous output.
+    """
     if 𝜑̈ == 0:
         return 0
-    return sum([I(O(floor(𝜑̈/(4**(floor(log(𝜑̈, 4) - i + 2)))), r, d), floor(𝜑̈/4**(floor(log(𝜑̈, 4)) - i + 1)) - (4 * floor(𝜑̈/(4**((floor(log(𝜑̈, 4)) - i + 2))))), r, d) for i in range(floor(log(𝜑̈, 4)) + 2)])
+    return sum([I(E(floor(𝜑̈/(4**(floor(log(𝜑̈, 4) - i + 2)))), r, d), floor(𝜑̈/4**(floor(log(𝜑̈, 4)) - i + 1)) - (4 * floor(𝜑̈/(4**((floor(log(𝜑̈, 4)) - i + 2))))), r, d) for i in range(floor(log(𝜑̈, 4)) + 2)])
 
 
 if __name__ == '__main__':
@@ -57,7 +61,7 @@ if __name__ == '__main__':
     radix = int(args.radix)
     digits = int(args.digits)
 
-    o = E(value, radix, digits)
+    o = O(value, radix, digits)
 
     if radix == 16:
         print(hex(o))
