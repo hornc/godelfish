@@ -127,10 +127,10 @@ To modify a program to output the accumulator value, simply multiply by 4, and a
 \section{Evaluation and output encoding}
 
 \begin{align}
-	O(\ddot{\varphi}, r, d) ={}& \left\lfloor \frac{E(\ddot{\varphi}, r, d)}{r^d} \right\rfloor
+	O(\ddot{\varphi}, r, d) ={}& \left\lfloor \frac{E(\ddot{\varphi}, r^d)}{r^d} \right\rfloor
 	\intertext{where}
 \begin{split}
-	E(\ddot{\varphi}, r, d) ={}& \sum_{i=0}^{\lfloor \log_4 \ddot{\varphi} \rfloor + 2} I(E(s(\ddot{\varphi}, i, 2), r, d), c(\ddot{\varphi}, i), r, d)
+	E(\ddot{\varphi}, z) ={}& \sum_{i=0}^{\lfloor \log_4 \ddot{\varphi} \rfloor + 2} I(E(s(\ddot{\varphi}, i, 2), z), c(\ddot{\varphi}, i), z)
 \end{split} \\
 \begin{split}
 	s(\ddot{\varphi}, i, n) ={}& \left\lfloor \frac{\ddot{\varphi}}{4^{\lfloor \log_4 \ddot{\varphi} \rfloor - i + n}} \right\rfloor
@@ -139,11 +139,28 @@ To modify a program to output the accumulator value, simply multiply by 4, and a
 	c(\ddot{\varphi}, i) ={}& s(\ddot{\varphi}, i, 1) - 4s(\ddot{\varphi}, i, 2)
 \end{split} \\
 \begin{split}
-	I(s, c, r, d) ={}& ...
+	I(s, c, z) ={}& v(s \bmod z, d(s, c, z))
+\end{split} \\
+\begin{split}
+	v(a, x) ={}&
+		\begin{cases}
+			-a,& \text{if } a + x < 0\\
+			-a,& \text{if } a + x = 256\\
+			a + x
+		\end{cases}
+\end{split} \\
+\begin{split}
+	d(s, c, z) ={}&
+		\begin{cases}
+			-1,& \text{if } c = 0\\
+			 1,& \text{if } c = 1\\
+			(s \bmod z)^2 - s \bmod z,& \text{if } c = 2\\
+			s(z - 1),& \text{if } c = 3\\
+		\end{cases}
 \end{split}
 \end{align}
 
-Where
+and
 \begin{tabular}{rl}
 	$\ddot{\varphi}$ =& Gödelfish value, $\ddot{\varphi} \in \mathbb{N}$ \\
 	r =& Radix of output values. \\
