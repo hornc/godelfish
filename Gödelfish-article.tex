@@ -130,16 +130,14 @@ To modify a program to output the accumulator value, simply multiply by 4, and a
 	O(\ddot{\varphi}, r, d) ={}& \left\lfloor \frac{E(\ddot{\varphi}, r^d)}{r^d} \right\rfloor
 	\intertext{where}
 \begin{split}
-	E(\ddot{\varphi}, z) ={}& \sum_{i=0}^{\lfloor \log_4 \ddot{\varphi} \rfloor + 2} I(E(s(\ddot{\varphi}, i, 2), z), c(\ddot{\varphi}, i), z)
+	E(\ddot{\varphi}, z) ={}& \sum_{i=0}^{\lfloor \log_4 \ddot{\varphi} \rfloor + 2}
+		v\bigg(E\big(s(\ddot{\varphi}, i, 2), z\big) \bmod z, d\Big(E\big(s(\ddot{\varphi}, i, 2), z\big), c(\ddot{\varphi}, i), z\Big)\bigg)
 \end{split} \\
 \begin{split}
 	s(\ddot{\varphi}, i, n) ={}& \left\lfloor \frac{\ddot{\varphi}}{4^{\lfloor \log_4 \ddot{\varphi} \rfloor - i + n}} \right\rfloor
 \end{split} \\
 \begin{split}
 	c(\ddot{\varphi}, i) ={}& s(\ddot{\varphi}, i, 1) - 4s(\ddot{\varphi}, i, 2)
-\end{split} \\
-\begin{split}
-	I(s, c, z) ={}& v(s \bmod z, d(s, c, z))
 \end{split} \\
 \begin{split}
 	v(a, x) ={}&
