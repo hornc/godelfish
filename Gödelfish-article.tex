@@ -148,11 +148,11 @@ To modify a program to output the accumulator value, simply multiply by 4, and a
 		\end{cases}
 \end{split} \\
 \begin{split}
-	d(s, c, z) ={}&
+	d(x, c, z) ={}&
 		\begin{cases}
 			-1,& \text{if } c = 0\\
 			 1,& \text{if } c = 1\\
-			(s \bmod z)^2 - s \bmod z,& \text{if } c = 2\\
+			(x \bmod z)^2 - x \bmod z,& \text{if } c = 2\\
 			s(z - 1),& \text{if } c = 3\\
 		\end{cases}
 \end{split}
