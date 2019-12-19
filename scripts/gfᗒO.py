@@ -42,12 +42,12 @@ def E(𝜑̈, z=10**4):
     """
     if 𝜑̈ == 0:
         return 0
-    return sum([I(E(floor(𝜑̈/(4**(floor(log(𝜑̈, 4) - i + 2)))), z), floor(𝜑̈/4**(floor(log(𝜑̈, 4)) - i + 1)) - (4 * floor(𝜑̈/(4**((floor(log(𝜑̈, 4)) - i + 2))))), z) for i in range(floor(log(𝜑̈, 4)) + 2)])
-    #return sum([v(E(s(𝜑̈, i, 2), z) % z, d(E(s(𝜑̈, i, 2), z), c(𝜑̈, i), z)) for i in range(floor(log(𝜑̈, 4)) + 2)])
+    #return sum([I(E(floor(𝜑̈/(4**(floor(log(𝜑̈, 4) - i + 2)))), z), floor(𝜑̈/4**(floor(log(𝜑̈, 4)) - i + 1)) - (4 * floor(𝜑̈/(4**((floor(log(𝜑̈, 4)) - i + 2))))), z) for i in range(floor(log(𝜑̈, 4)) + 2)])
+    return sum([v(E(s(𝜑̈, i, 2), z) % z, d(E(s(𝜑̈, i, 2), z), c(𝜑̈, i), z)) for i in range(floor(log(𝜑̈, 4)) + 2)])
 
 def c(𝜑̈, i):
     """ c: current Command."""
-    return s(𝜑̈, i, 0) - 4 * s(𝜑̈, i, 1)
+    return s(𝜑̈, i, 1) - 4 * s(𝜑̈, i, 2)
 
 def d(x, c, z):
     """ d: Difference."""
@@ -58,7 +58,7 @@ def d(x, c, z):
     elif c == 2:
         return (x%z)**2 - x%z
     elif c == 3:
-        return x * (z - 1)
+        return x * (z - 1) + x%z
 
 def s(𝜑̈, i, n):
     """ s: current State."""
@@ -74,7 +74,7 @@ def v(a, x):
     elif a + x == 256:
         return -a
     else:
-        return a + x
+        return x
 
 
 if __name__ == '__main__':
