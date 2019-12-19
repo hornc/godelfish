@@ -51,7 +51,8 @@ b^{-1}(\beta) = \ddot{\varphi}
 \]
 
 \begin{align}
-	b(\ddot{\varphi}) ={}& \sum_{i=0}^{\lfloor \log_4 \ddot{\varphi} \rfloor + 1} b_{\textsc{idso}}(\lfloor{\frac{\ddot{\varphi}}{4^i}}\rfloor \bmod 4) \cdot 8^{\sum_{j=0}^{i} \lfloor \log_8(b_{\textsc{idso}}(\lfloor{\frac{\ddot{\varphi}}{4^j}}\rfloor \bmod 4)) \rfloor + 1} \\
+	b(\ddot{\varphi}) ={}& \sum_{i=0}^{\lfloor \log_4 \ddot{\varphi} \rfloor + 1} b_{\textsc{idso}}\left(\left\lfloor{\frac{\ddot{\varphi}}{4^i}}\right\rfloor \bmod 4\right)
+		\cdot 8^{\sum_{j=0}^{i} \left\lfloor \log_8\left(b_{\textsc{idso}}\left(\left\lfloor{\frac{\ddot{\varphi}}{4^j}}\right\rfloor \bmod 4\right)\right) \right\rfloor + 1} \\
 	b_{\textsc{idso}}(x) ={}& \max(b_{\textsc{id}}(x), b_{\textsc{so}}(x)) \\
 	b_{\textsc{id}}(x) ={}& 216x \cdot 8^{136} + d \\
 	b_{\textsc{so}}(x) ={}& ox - g \\
