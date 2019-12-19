@@ -42,7 +42,12 @@ def test_subtraction():
     gf = '11213030303030'
     assert gfᗒO.O(int(gf, 4), 10, 2) == 504030201
     assert gfᗒO.O(int(gf, 4), 10, 3) == 5004003002001
-    #assert gfᗒO.O(int(gf, 4), 10, 4) == 500040003000200010000
+
+
+def test_large_state():
+    gf = '11211213030303030'
+    assert gfᗒO.O(int(gf, 4), 10, 4) == 370036003500340033
+
 
 def test_mandatory_arithmetic_zero():
     gf = int('112223', 4)

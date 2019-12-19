@@ -18,7 +18,7 @@ class Memoize:
 
 
 # Final Output of a Gödelfish program, excludes the current accumulator value.
-O = lambda 𝜑̈, r=10, d=4: floor(E(𝜑̈, r**d)/r**d)
+O = lambda 𝜑̈, r=10, d=4: E(𝜑̈, r**d)//r**d
 
 
 @Memoize
