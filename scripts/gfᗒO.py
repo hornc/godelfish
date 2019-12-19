@@ -48,7 +48,7 @@ def d(x, c, z):
 
 def s(𝜑̈, i, n):
     """ s: current State."""
-    return floor(𝜑̈ / 4**(floor(log(𝜑̈, 4)) - i + n))
+    return 𝜑̈ // 4**(floor(log(𝜑̈, 4)) - i + n)
 
 def v(a, x):
     """ v: oVerflow check.
