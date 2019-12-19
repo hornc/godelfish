@@ -5,36 +5,23 @@
 
 from math import floor, log
 
+class Memoize:
+    """ Memoize to speed up the recursive fn."""
+    def __init__(self, fn):
+        self.fn = fn
+        self.memo = {}
+
+    def __call__(self, *args):
+        if args not in self.memo:
+            self.memo[args] = self.fn(*args)
+        return self.memo[args]
+
 
 # Final Output of a Gödelfish program, excludes the current accumulator value.
 O = lambda 𝜑̈, r=10, d=4: floor(E(𝜑̈, r**d)/r**d)
 
 
-def I(o, c, z=10**4):
-    # o = current output (int) 
-    # c = command (int)
-    # temp prevent negative:
-    if o == 0 and c == 0:
-        return 0
-    #print('o: %d c: %d' % (o, c))
-    ac = o - (o//(z))*z
-    if c == 3:  # output
-       return o * z - o + ac
-
-    if c == 2:  # square
-       v = ac**2 - ac
-    if c == 1:
-       #print('INC')
-       v = 1
-    if c == 0:
-       #print('NEG')
-       v = -1
-    if v + ac == 256:
-        return -ac
-    else:
-        return v
-
-
+@Memoize
 def E(𝜑̈, z=10**4):
     """
     Evaluate a Gödelfish program. Returns full state:
@@ -42,7 +29,6 @@ def E(𝜑̈, z=10**4):
     """
     if 𝜑̈ == 0:
         return 0
-    #return sum([I(E(floor(𝜑̈/(4**(floor(log(𝜑̈, 4) - i + 2)))), z), floor(𝜑̈/4**(floor(log(𝜑̈, 4)) - i + 1)) - (4 * floor(𝜑̈/(4**((floor(log(𝜑̈, 4)) - i + 2))))), z) for i in range(floor(log(𝜑̈, 4)) + 2)])
     return sum([v(E(s(𝜑̈, i, 2), z) % z, d(E(s(𝜑̈, i, 2), z), c(𝜑̈, i), z)) for i in range(floor(log(𝜑̈, 4)) + 2)])
 
 def c(𝜑̈, i):

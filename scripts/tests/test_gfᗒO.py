@@ -54,13 +54,11 @@ def test_mandatory_arithmetic_288():
     assert gfᗒO.O(gf) == 288
 
 
-@pytest.mark.skip("This takes too long to compute (with the current code).")
 def test_mandatory_arithmetic_long_zero():
     gf = int('1122120000000000000000000000000000000003', 4)
-    assert gfᗒO.O(gf, 16, 2) == 0
+    assert gfᗒO.O(gf, 16, 3) == 0
 
 
-@pytest.mark.skip("This takes too long to compute (with the current code).")
 def test_ASCII_output_in_different_bases():
     # HI = 072, 073 decimal
     # HI = 0x48, 0x49 hex
@@ -70,5 +68,4 @@ def test_ASCII_output_in_different_bases():
     assert dec_ != hex_
     assert dec_ == 720073
     assert hex_ == 0x4849
-
 
