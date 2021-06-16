@@ -3,7 +3,6 @@
 # LaTeX
 *.aux
 *.log
-*.pdf
 
 # python
 __pycache__/
