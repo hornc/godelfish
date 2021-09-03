@@ -13,7 +13,7 @@ Converts a Gödelfish number, Natural/int (𝜑̈ ∈ ℕ), or Unnatural/float (
 """
 
 
-BF = 'brainf*'.replace('*', 'kcu'[::-1])
+BF = 'brainf***'
 BF8 = ']><+-.,['
 
 
