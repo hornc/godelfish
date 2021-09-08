@@ -35,7 +35,7 @@ Clone this repo from Github and use the scripts directly.
     $ ./gf.py -b -0.02267050412500270959407579713247251696870738403389181782725188269749688319088642196836222187626319203264982082686924411902690
     ++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++.
 
-Assuming you have a bf interprerter `bff4` on your `$PATH` you can pipe the output to see it evaluate:
+Assuming you have a bf interpreter `bff4` on your `$PATH` you can pipe the output to see it evaluate:
 
     $ ./gf.py -b -0.02267050412500270959407579713247251696870738403389181782725188269749688319088642196836222187626319203264982082686924411902690 | bff4
     Hello World!
@@ -48,7 +48,7 @@ The `0d` prefix for the number is a custom base-4 notation:
 
 The input number `0d011221203` is equivalent to decimal 23139, or hex `0x5a63`, and all of these formats are recognised as input by the interpreter. Conceptually it is important that the program input is a single numeric value, *not* a string of symbols from one specific alphabet or in one specific base.
 
-Assuming you have a bf interprerter `bff4` on your `$PATH` you can pipe the output to see it evaluate the correct Deadfish accumulator output value:
+Assuming you have a bf interpreter `bff4` on your `$PATH` you can pipe the output to see it evaluate the correct Deadfish accumulator output value:
 
     $ ./gf.py -b 0d011221203 | bff4
     288
