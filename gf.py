@@ -45,11 +45,11 @@ if __name__ == '__main__':
     n = args.number.strip()
     b = 0
     r = ''
-    if '.' in n: # float
+    if '.' in n:  # float
         bf8 = gf4_to_bf8(n)
         n, r = n.split('.')
         sign = n[0] if n[0] == '-' else '+'
-    elif n.startswith('0d'): # custom base-4 notation
+    elif n.startswith('0d'):  # custom base-4 notation
         b = 4
         n = n[2:]
     s = to_deadfish(int(n, b))
