@@ -99,4 +99,4 @@ Base-16, 16 digits per output value:
 
     while read df;do ./scripts/gfᗒO.py $(./scripts/dfᗒgf.py $df | egrep -o '0x.*$') 10 5 | rev | sed -r 's/(.{5})/\1 /g' | rev ;done
 
-This reads standard Deadfish `idso` commands from STDIN, converts them to Gödelfish, and evaluates the commands arithmetically. The `sed` command groups output to 5 decmial place values.
+This reads standard Deadfish `idso` commands from STDIN, converts them to Gödelfish, and evaluates the commands arithmetically. The `sed` command groups output to 5 decimal place values.
